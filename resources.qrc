@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="Card.qml">qml/planningpoker/Card.qml</file>
+        <file alias="main.qml">qml/planningpoker/main.qml</file>
+        <file alias="MainPage.qml">qml/planningpoker/MainPage.qml</file>
+        <file alias="coffee.png">pics/coffee.png</file>
+        <file alias="eight.png">pics/eight.png</file>
+        <file alias="five.png">pics/five.png</file>
+        <file alias="fourty.png">pics/fourty.png</file>
+        <file alias="half.png">pics/half.png</file>
+        <file alias="hundred.png">pics/hundred.png</file>
+        <file alias="none.png">pics/none.png</file>
+        <file alias="thirteen.png">pics/thirteen.png</file>
+        <file alias="three.png">pics/three.png</file>
+        <file alias="twenty.png">pics/twenty.png</file>
+        <file alias="two.png">pics/two.png</file>
+        <file alias="what.png">pics/what.png</file>
+        <file alias="one.png">pics/one.png</file>
+    </qresource>
+</RCC>
