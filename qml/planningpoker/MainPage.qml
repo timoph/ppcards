@@ -1,10 +1,9 @@
-import QtQuick 1.1
-import com.nokia.meego 1.0
+import QtQuick 2.10
 
-Page {
+Rectangle {
     id: mainpage
-    tools: commonTools
-    orientationLock: PageOrientation.LockPortrait
+    height: 700
+    width: 480
 
     function setSelectedCard(ind) {
         flick.currentIndex = flick.indexAt(flick.contentX, flick.contentY)
@@ -30,6 +29,5 @@ Page {
         delegate: listdelegate
         snapMode: ListView.SnapOneItem
         keyNavigationWraps: true
-        highlightMoveSpeed: 1600
     }
 }

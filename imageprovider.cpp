@@ -3,7 +3,7 @@
 #include <QDebug>
 
 ImageProvider::ImageProvider() :
-    QDeclarativeImageProvider(QDeclarativeImageProvider::Pixmap)
+    QQuickImageProvider(QQuickImageProvider::Pixmap)
 {
 }
 

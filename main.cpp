@@ -1,13 +1,14 @@
-#include <QtGui/QApplication>
-#include <QtDeclarative>
+#include <QtGui/QGuiApplication>
+#include <QQuickView>
 #include "imageprovider.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    QDeclarativeView view;
+    QGuiApplication app(argc, argv);
+    QQuickView view;
     view.engine()->addImageProvider(QLatin1String("pics"), new ImageProvider);
     view.setSource(QUrl("qrc:///main.qml"));
-    view.showFullScreen();
+    //view.showFullScreen();
+    view.show();
     return app.exec();
 }

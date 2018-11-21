@@ -1,10 +1,10 @@
 #ifndef IMAGEPROVIDER_H
 #define IMAGEPROVIDER_H
 
-#include <QDeclarativeImageProvider>
+#include <QQuickImageProvider>
 #include <QPixmap>
 
-class ImageProvider : public QDeclarativeImageProvider
+class ImageProvider : public QQuickImageProvider
 {
 public:
     ImageProvider();
