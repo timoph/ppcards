@@ -1,60 +1,43 @@
-import QtQuick 2.3
+import QtQuick
 
-Rectangle {
-    id: rootrect
+Item {
+    id: card
     width: 270
     height: 420
-    color: "#000000"
 
-    property url imageSource
+    property string label
+    property string image
+    // true shows the back of the card
+    property bool flipped: false
 
-    Rectangle {
-        id: cardrect
-        anchors.centerIn: parent
-        width: parent.width * 0.92
-        height: parent.height * 0.92
-        radius: Math.min(width, height) * 0.05
-        border.color: "#000000"
-        border.width: 1
-        smooth: true
+    signal clicked()
+    signal pressAndHold()
 
-        readonly property real shortSide: Math.min(width, height)
-        readonly property real margin: shortSide * 0.05
-        readonly property real cornerSize: shortSide * 0.2
+    Flipable {
+        id: flipable
+        anchors.fill: parent
 
-        Image {
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.margins: cardrect.margin
-            source: rootrect.imageSource
-            width: cardrect.cornerSize
-            height: cardrect.cornerSize
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            mipmap: true
+        front: CardFace {
+            anchors.fill: parent
+            label: card.label
+            image: card.image
+        }
+        back: CardBack {
+            anchors.fill: parent
         }
 
-        Image {
-            anchors.centerIn: parent
-            source: rootrect.imageSource
-            width: cardrect.shortSide * 0.6
-            height: width
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            mipmap: true
+        transform: Rotation {
+            origin.x: flipable.width / 2
+            origin.y: flipable.height / 2
+            axis { x: 0; y: 1; z: 0 }
+            angle: card.flipped ? 180 : 0
+            Behavior on angle { NumberAnimation { duration: 300; easing.type: Easing.InOutQuad } }
         }
+    }
 
-        Image {
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.margins: cardrect.margin
-            source: rootrect.imageSource
-            width: cardrect.cornerSize
-            height: cardrect.cornerSize
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            mipmap: true
-            rotation: 180
-        }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: card.clicked()
+        onPressAndHold: card.pressAndHold()
     }
 }
