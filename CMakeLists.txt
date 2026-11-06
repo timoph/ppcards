@@ -14,8 +14,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Quick)
 
 add_executable(ppcards
     main.cpp
-    imageprovider.cpp
-    imageprovider.h
     resources.qrc
 )
 

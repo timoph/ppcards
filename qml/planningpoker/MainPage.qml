@@ -1,33 +1,37 @@
 import QtQuick 2.3
 
-Rectangle {
+FocusScope {
     id: mainpage
-    height: 700
-    width: 480
 
-    function setSelectedCard(ind) {
-        flick.currentIndex = flick.indexAt(flick.contentX, flick.contentY)
-        flick.currentIndex = ind
-    }
+    // Card images in deck order (index 0 - 12)
+    readonly property var cards: [
+        "none.png", "half.png", "one.png", "two.png", "three.png",
+        "five.png", "eight.png", "thirteen.png", "twenty.png",
+        "fourty.png", "hundred.png", "what.png", "coffee.png"
+    ]
 
-    Component {
-        id: listdelegate
-        Card {
-            width: mainpage.width
-            height: mainPage.height
-            cardnumber: index
-        }
+    function selectCard(index) {
+        flick.currentIndex = index
     }
 
     ListView {
         id: flick
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: parent.height
+        anchors.fill: parent
+        focus: true
         orientation: ListView.Horizontal
-        model: 13
-        delegate: listdelegate
+        model: mainpage.cards
         snapMode: ListView.SnapOneItem
+        // Keep currentIndex in sync with the visible card so that both
+        // swiping and arrow keys move one card at a time.
+        highlightRangeMode: ListView.StrictlyEnforceRange
+        highlightMoveDuration: 200
         keyNavigationWraps: true
+        boundsBehavior: Flickable.StopAtBounds
+
+        delegate: Card {
+            width: flick.width
+            height: flick.height
+            imageSource: "qrc:/" + modelData
+        }
     }
 }
