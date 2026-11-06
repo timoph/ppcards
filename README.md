@@ -7,3 +7,11 @@ need for physical cards. Worked well for my purpose back in the day.
 This was originally written for Nokia N9. Nokia specific stuff has been now removed.
 The application should be usuable with a mobile device that can run a recent version of Qt.
 Also works on desktop but it's not very usable there.
+
+## Building
+
+Requires CMake 3.16+ and Qt 6 (or Qt 5) with the Quick module.
+
+    cmake -S . -B build
+    cmake --build build
+    ./build/ppcards

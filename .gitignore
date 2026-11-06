@@ -5,3 +5,5 @@ Makefile.*
 moc_*
 *.o
 *_qmlcache.qrc
+build/
+CMakeLists.txt.user
